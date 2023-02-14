@@ -13,10 +13,11 @@ export async function middleware(req, ev) {
                 return fetch(`${telegraphBaseUrl}/${pathname.replace("/api", "")}`);
             }
         }
-    }
 
-    if (pathname.startsWith("/steam-deck")) {
-        return fetch(`${steamDeckMirrorBaseUrl}/${pathname.replace("/steam-deck", "")}`);
+        // steam deck
+        if (pathname.startsWith("/api/steam-deck")) {
+            return fetch(`${steamDeckMirrorBaseUrl}/${pathname.replace("/api/steam-deck", "")}`);
+        }
     }
 
     return fetch("https://www.baidu.com/");
