@@ -4,6 +4,8 @@ const telegraphBaseUrl = "https://telegra.ph";
 
 const steamDeckMirrorBaseUrl = "https://steamdeck-packages.steamos.cloud"
 
+const gfwListRules = "https://raw.githubusercontent.com/masachi/gfwlist/master/gfwlist-custom.txt"
+
 export async function middleware(req, ev) {
     const { pathname, search, hash } = req.nextUrl;
 
@@ -17,6 +19,10 @@ export async function middleware(req, ev) {
         // steam deck
         if (pathname.startsWith("/api/steam-deck")) {
             return fetch(`${steamDeckMirrorBaseUrl}/${pathname.replace("/api/steam-deck", "")}`);
+        }
+
+        if (pathname.startsWith("/api/rules/gfwlist")) {
+            return fetch(gfwListRules);
         }
     }
 
