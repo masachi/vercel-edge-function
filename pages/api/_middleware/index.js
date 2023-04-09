@@ -2,7 +2,7 @@ import { NextFetchEvent, NextRequest } from "next/server";
 
 const telegraphBaseUrl = "https://telegra.ph";
 
-const githubRawBaseUrl = "https://raw.githubusercontent.com/masachi/files/main/"
+const githubRawBaseUrl = "https://raw.githubusercontent.com/masachi/files/main"
 
 const steamDeckMirrorBaseUrl = "https://steamdeck-packages.steamos.cloud"
 
