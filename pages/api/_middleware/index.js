@@ -14,8 +14,9 @@ export async function middleware(req, ev) {
     if(pathname.startsWith("/api")) {
         if (pathname.startsWith("/api/file")) {
             if(/(.*\/)*.+\.(png|jpg|gif|bmp|jpeg|PNG|JPG|GIF|BMP|JPEG)/g.test(pathname)) {
-                let fileName = `${pathname.replace("/api/file/", "")}`;
+                let fileName = pathname.replace("/api/file/", "");
                 let folder = fileName.substring(0,2);
+                console.log("file", folder, fileName);
                 return fetch(`${githubRawBaseUrl}/${folder}/${fileName}`);
             }
         }
