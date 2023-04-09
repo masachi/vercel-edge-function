@@ -2,6 +2,8 @@ import { NextFetchEvent, NextRequest } from "next/server";
 
 const telegraphBaseUrl = "https://telegra.ph";
 
+const githubRawBaseUrl = "https://raw.githubusercontent.com/masachi/files/main/"
+
 const steamDeckMirrorBaseUrl = "https://steamdeck-packages.steamos.cloud"
 
 const gfwListRules = "https://raw.githubusercontent.com/masachi/gfwlist/master/gfwlist-custom.txt"
@@ -12,7 +14,9 @@ export async function middleware(req, ev) {
     if(pathname.startsWith("/api")) {
         if (pathname.startsWith("/api/file")) {
             if(/(.*\/)*.+\.(png|jpg|gif|bmp|jpeg|PNG|JPG|GIF|BMP|JPEG)/g.test(pathname)) {
-                return fetch(`${telegraphBaseUrl}/${pathname.replace("/api", "")}`);
+                let fileName = `${pathname.replace("/api/file", "")}`;
+                let folder = fileName.substring(0,2);
+                return fetch(`${githubRawBaseUrl}/${folder}/${fileName}`);
             }
         }
 
