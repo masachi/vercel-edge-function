@@ -6,6 +6,8 @@ const githubRawBaseUrl = "https://raw.githubusercontent.com/masachi/files/main"
 
 const steamDeckMirrorBaseUrl = "https://steamdeck-packages.steamos.cloud"
 
+const apacheMirrorBaseUrl = "https://archive.apache.org"
+
 const gfwListRules = "https://raw.githubusercontent.com/masachi/gfwlist/master/gfwlist-custom.txt"
 
 export async function middleware(req, ev) {
@@ -24,6 +26,10 @@ export async function middleware(req, ev) {
         // steam deck
         if (pathname.startsWith("/api/steam-deck")) {
             return fetch(`${steamDeckMirrorBaseUrl}/${pathname.replace("/api/steam-deck", "")}`);
+        }
+
+        if (pathname.startsWith("/api/apache")) {
+            return fetch(`${apacheMirrorBaseUrl}/${pathname.replace("/api/apache", "")}`);
         }
 
         if (pathname.startsWith("/api/rules/gfwlist")) {
